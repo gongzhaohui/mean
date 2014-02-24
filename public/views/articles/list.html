@@ -1,0 +1,13 @@
+<section data-ng-controller="ArticlesController" data-ng-init="find()">
+    <div class="gridStyle" ng-grid="gridOptions"></div>
+	<!---<ul class="articles unstyled">
+		<li data-ng-repeat="article in articles">
+			<span>{{article.created | date:'medium'}}</span> /
+			<span>{{article.user.name}}</span>
+			<h2><a data-ng-href="#!/articles/{{article._id}}">{{article.title}}</a></h2>
+			<div>{{article.content}}</div>
+		</li>
+	</ul>-->
+    <button type="button" class="btn btn-default" data-ng-click="batchUpdate()">Batch Update</button>
+	<h1 data-ng-hide="!articles || articles.length">No articles yet. <br> Why don't you <a href="/#!/articles/create">Create One</a>?</h1>
+</section>
