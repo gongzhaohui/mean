@@ -13,6 +13,9 @@ angular.module('mean.articles').controller('ArticlesController', ['$scope', '$st
         ],
         afterSelectionChange:"findArticle"
     };
+    $scope.batchUpdate=function(){
+        console.log("bu");
+    }
     $scope.findArticle=function(rowItem, event){
         console.log(rowItem._id);
     }
