@@ -3,19 +3,16 @@
 angular.module('mean.articles').controller('ArticlesController', ['$scope', '$stateParams', '$location', 'Global', 'Articles', function ($scope, $stateParams, $location, Global, Articles) {
     $scope.global = Global;
     $scope.gridOptions = {
-        data: "articles",
+        data: 'articles',
         enableCellSelection: true,
         enableRowSelection: false,
-        enableCellEdit: true,
-        columnDefs: [
-            {field: 'title', displayName: 'title'},
-            {field: 'content', displayName: 'content'}
-        ],
-        afterSelectionChange:"findArticle"
+        enableCellEdit: true
     };
-    $scope.findArticle=function(rowItem, event){
-        console.log(rowItem._id);
-    }
+    $scope.batchUpdate = function () {
+       
+        console.log(json($scope.articles[0]));
+        console.log(json($scope.articles[1]));
+    };
     $scope.create = function () {
         var article = new Articles({
             title: this.title,
