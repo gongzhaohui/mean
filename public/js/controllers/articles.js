@@ -9,10 +9,18 @@ angular.module('mean.articles').controller('ArticlesController', ['$scope', '$st
         enableCellEdit: true
     };
     $scope.batchUpdate = function () {
-       
-        console.log(json($scope.articles[0]));
-        console.log(json($scope.articles[1]));
+
+        console.log($scope.articles[0]);
+        console.log($scope.articles[1]);
     };
+    $scope.$watch('articles', function (newArticle, oldArticle) {
+        console.log("new");
+        console.log(newArticle);
+
+        console.log("old");
+        console.log(oldArticle);
+
+    },true);
     $scope.create = function () {
         var article = new Articles({
             title: this.title,
