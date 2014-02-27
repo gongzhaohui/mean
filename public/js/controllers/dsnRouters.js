@@ -1,9 +1,9 @@
 'use strict';
 
-angular.module('mean.DsnRouters').controller('DsnRoutersController', ['$scope', '$stateParams', '$location', 'Global', 'DsnRouters', function ($scope, $stateParams, $location, Global, DsnRouters) {
+angular.module('mean.dsnRouters').controller('DsnRoutersController', ['$scope', '$stateParams', '$location', 'Global', 'DsnRouters', function ($scope, $stateParams, $location, Global, DsnRouters) {
     $scope.global = Global;
     $scope.gridOptions = {
-        data: 'DsnRouters',
+        data: 'dsnRouters',
         enableCellSelection: true,
         enableRowSelection: false,
         enableCellEdit: true,
@@ -55,13 +55,13 @@ angular.module('mean.DsnRouters').controller('DsnRoutersController', ['$scope', 
     };
 
     $scope.find = function () {
-        DsnRouters.query(function (DsnRouters) {
+        dsnRouters.query(function (DsnRouters) {
             $scope.DsnRouters = DsnRouters;
         });
     };
 
     $scope.findOne = function () {
-        DsnRouters.get({
+        dsnRouters.get({
             articleId: $stateParams.articleId
         }, function (dsnRouter) {
             $scope.dsnRouter = dsnRouter;
