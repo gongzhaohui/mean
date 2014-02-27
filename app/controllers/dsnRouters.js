@@ -23,7 +23,7 @@ exports.dsnRouter = function (req, res, next, id) {
 /**
  * Create an dsnRouter
  */
-exports.create = function(req, res) {
+exports.create = function (req, res) {
     var dsnRouter = new DsnRouter(req.body);
     dsnRouter.user = req.user;
 
@@ -42,7 +42,7 @@ exports.create = function(req, res) {
 /**
  * Update an dsnRouter
  */
-exports.update = function(req, res) {
+exports.update = function (req, res) {
     var dsnRouter = req.dsnRouter;
 
     dsnRouter = _.extend(dsnRouter, req.body);
@@ -62,7 +62,7 @@ exports.update = function(req, res) {
 /**
  * Delete an dsnRouter
  */
-exports.destroy = function(req, res) {
+exports.destroy = function (req, res) {
     var dsnRouter = req.dsnRouter;
 
     dsnRouter.remove(function (err) {
@@ -80,14 +80,14 @@ exports.destroy = function(req, res) {
 /**
  * Show a dsnRouter
  */
-exports.show = function(req, res) {
+exports.show = function (req, res) {
     res.jsonp(req.dsnRouter);
 };
 
 /**
- * List of Articles
+ * List of DsnRouters
  */
-exports.all = function(req, res) {
+exports.all = function (req, res) {
     DsnRouter.find().sort('-created').populate('user', 'name username').exec(function (err, dsnrouters) {
         if (err) {
             res.render('error', {

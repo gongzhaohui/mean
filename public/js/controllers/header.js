@@ -5,12 +5,12 @@ angular.module('mean.system').controller('HeaderController', ['$scope', 'Global'
 
     $scope.menu = [
         {
-            'title': 'Articles',
-            'link': 'articles'
+            'title': 'DsnRouters',
+            'link': 'dsnRouters'
         },
         {
             'title': 'Create New DsnRouter',
-            'link': 'articles/create'
+            'link': 'dsnRouters/create'
         }
     ];
 

@@ -1,0 +1,14 @@
+<section data-ng-controller="DsnRoutersController" data-ng-init="find()">
+    <div class="gridStyle" ng-grid="gridOptions"></div>
+    <!---<ul class="dsnRouters unstyled">
+        <li data-ng-repeat="dsnRouter in dsnRouters">
+            <span>{{dsnRouter.created | date:'medium'}}</span> /
+            <span>{{dsnRouter.user.name}}</span>
+            <h2><a data-ng-href="#!/dsnRouters/{{dsnRouter._id}}">{{dsnRouter.title}}</a></h2>
+            <div>{{dsnRouter.content}}</div>
+        </li>
+    </ul>-->
+    <button type="button" class="btn btn-default" data-ng-click="batchUpdate()">Batch Update</button>
+    <h1 data-ng-hide="!DsnRouters || DsnRouters.length">No DsnRouters yet. <br> Why don't you <a
+            href="/#!/DsnRouters/create">Create One</a>?</h1>
+</section>

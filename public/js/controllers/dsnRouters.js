@@ -1,76 +1,70 @@
 'use strict';
 
-angular.module('mean.articles').controller('ArticlesController', ['$scope', '$stateParams', '$location', 'Global', 'Articles', function ($scope, $stateParams, $location, Global, Articles) {
+angular.module('mean.DsnRouters').controller('DsnRoutersController', ['$scope', '$stateParams', '$location', 'Global', 'DsnRouters', function ($scope, $stateParams, $location, Global, DsnRouters) {
     $scope.global = Global;
     $scope.gridOptions = {
-        data: "articles",
+        data: 'DsnRouters',
         enableCellSelection: true,
         enableRowSelection: false,
         enableCellEdit: true,
         columnDefs: [
             {field: 'title', displayName: 'title'},
             {field: 'content', displayName: 'content'}
-        ],
-        afterSelectionChange:"findArticle"
+        ]
     };
-    $scope.batchUpdate=function(){
-        console.log("bu");
-    }
-    $scope.findArticle=function(rowItem, event){
-        console.log(rowItem._id);
-    }
+
     $scope.create = function () {
-        var article = new Articles({
+        var dsnRouter = new DsnRouters({
             title: this.title,
             content: this.content
         });
-        article.$save(function (response) {
-            $location.path('articles/' + response._id);
+        dsnRouter.$save(function (response) {
+            $location.path('dsnRouters/' + response._id);
         });
 
         this.title = '';
         this.content = '';
     };
 
-    $scope.remove = function (article) {
-        if (article) {
-            article.$remove();
+    $scope.remove = function (dsnRouter) {
+        if (dsnRouter) {
+            dsnRouter.$remove();
 
-            for (var i in $scope.articles) {
-                if ($scope.articles[i] === article) {
-                    $scope.articles.splice(i, 1);
+            for (var i in $scope.DsnRouters) {
+                if ($scope.DsnRouters[i] === dsnRouter) {
+                    $scope.DsnRouters.splice(i, 1);
                 }
             }
         }
         else {
             $scope.dsnRouter.$remove();
-            $location.path('articles');
+            $location.path('DsnRouters');
         }
     };
 
     $scope.update = function () {
-        var article = $scope.dsnRouter;
-        if (!article.updated) {
-            article.updated = [];
+        var dsnRouter = $scope.dsnRouter;
+        if (!dsnRouter.updated) {
+            dsnRouter.updated = [];
         }
-        article.updated.push(new Date().getTime());
+        dsnRouter.updated.push(new Date().getTime());
 
-        article.$update(function () {
-            $location.path('articles/' + article._id);
+        dsnRouter.$update(function () {
+            $location.path('dsnRouters/' + dsnRouter._id);
         });
     };
 
     $scope.find = function () {
-        Articles.query(function (articles) {
-            $scope.articles = articles;
+        DsnRouters.query(function (DsnRouters) {
+            $scope.DsnRouters = DsnRouters;
         });
     };
 
     $scope.findOne = function () {
-        Articles.get({
+        DsnRouters.get({
             articleId: $stateParams.articleId
-        }, function (article) {
-            $scope.dsnRouter = article;
+        }, function (dsnRouter) {
+            $scope.dsnRouter = dsnRouter;
         });
     };
 }]);

@@ -3,7 +3,7 @@
 (function () {
     // Articles Controller Spec
     describe('MEAN controllers', function () {
-        describe('ArticlesController', function () {
+        describe('DsnRoutersController', function () {
             // The $resource service augments the response object with methods for updating and deleting the resource.
             // If we were to use the standard toEqual matcher, our tests would fail because the test values would not match
             // the responses exactly. To solve the problem, we use a newly-defined toEqualData Jasmine matcher.
@@ -21,7 +21,7 @@
             beforeEach(module('mean'));
 
             // Initialize the controller and a mock scope
-            var ArticlesController,
+            var DsnRoutersController,
                 scope,
                 $httpBackend,
                 $stateParams,
@@ -34,7 +34,7 @@
 
                 scope = $rootScope.$new();
 
-                ArticlesController = $controller('ArticlesController', {
+                DsnRoutersController = $controller('DsnRoutersController', {
                     $scope: scope
                 });
 
@@ -50,7 +50,7 @@
                 'fetched from XHR', function () {
 
                 // test expected GET request
-                $httpBackend.expectGET('articles').respond([
+                $httpBackend.expectGET('dsnRouters').respond([
                     {
                         title: 'An DsnRouter about MEAN',
                         content: 'MEAN rocks!'
@@ -122,7 +122,7 @@
                 scope.content = 'MEAN rocks!';
 
                 // test post request is sent
-                $httpBackend.expectPOST('articles', postArticleData()).respond(responseArticleData());
+                $httpBackend.expectPOST('dsnRouters', postArticleData()).respond(responseArticleData());
 
                 // Run controller
                 scope.create();
@@ -133,7 +133,7 @@
                 expect(scope.content).toEqual('');
 
                 // test URL location to new object
-                expect($location.path()).toBe('/articles/' + responseArticleData()._id);
+                expect($location.path()).toBe('/dsnRouters/' + responseArticleData()._id);
             });
 
             it('$scope.update() should update a valid dsnRouter', inject(function (Articles) {
@@ -157,9 +157,9 @@
                 $httpBackend.expectPUT(/articles\/([0-9a-fA-F]{24})$/).respond();
 
                 // testing the body data is out for now until an idea for testing the dynamic updated array value is figured out
-                //$httpBackend.expectPUT(/articles\/([0-9a-fA-F]{24})$/, putArticleData()).respond();
+                //$httpBackend.expectPUT(/dsnRouters\/([0-9a-fA-F]{24})$/, putArticleData()).respond();
                 /*
-                 Error: Expected PUT /articles\/([0-9a-fA-F]{24})$/ with different data
+                 Error: Expected PUT /dsnRouters\/([0-9a-fA-F]{24})$/ with different data
                  EXPECTED: {"_id":"525a8422f6d0f87f0e407a33","title":"An DsnRouter about MEAN","to":"MEAN is great!"}
                  GOT:      {"_id":"525a8422f6d0f87f0e407a33","title":"An DsnRouter about MEAN","to":"MEAN is great!","updated":[1383534772975]}
                  */
@@ -169,7 +169,7 @@
                 $httpBackend.flush();
 
                 // test URL location to new object
-                expect($location.path()).toBe('/articles/' + putArticleData()._id);
+                expect($location.path()).toBe('/dsnRouters/' + putArticleData()._id);
 
             }));
 
@@ -192,8 +192,8 @@
                 scope.remove(article);
                 $httpBackend.flush();
 
-                // test after successful delete URL location articles lis
-                //expect($location.path()).toBe('/articles');
+                // test after successful delete URL location dsnRouters lis
+                //expect($location.path()).toBe('/dsnRouters');
                 expect(scope.articles.length).toBe(0);
 
             }));

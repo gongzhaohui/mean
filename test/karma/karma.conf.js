@@ -28,7 +28,7 @@ module.exports = function (config) {
             'public/js/directives.js',
             'public/js/filters.js',
             'public/js/services/global.js',
-            'public/js/services/articles.js',
+            '../../public/js/services/dsnRouters.js',
             'public/js/controllers/dsnRouters.js',
             'public/js/controllers/index.js',
             'public/js/controllers/header.js',
