@@ -106,13 +106,13 @@ If you are using node instead of grunt, it is very similar:
 > NOTE: Running Node.js applications in the __production__ environment enables caching, which is disabled by default in all other environments.
 
 ## Getting Started
-  We pre-included an article example, check it out:
-  * [The Model](app/models/article.js) - Where we define our object schema.
-  * [The Controller](app/controllers/articles.js) - Where we take care of our backend logic.
-  * [NodeJS Routes](app/routes/articles.js) - Where we define our REST service routes.
+  We pre-included an dsnRouter example, check it out:
+  * [The Model](app/models/dsgRouter.js) - Where we define our object schema.
+  * [The Controller](app/controllers/dsnRouters.js) - Where we take care of our backend logic.
+  * [NodeJS Routes](app/routes/dsnRouters.js) - Where we define our REST service routes.
   * [AngularJs Routes](public/js/config.js) - Where we define our CRUD routes.
-  * [The AngularJs Service](public/js/services/articles.js) - Where we connect to our REST service.
-  * [The AngularJs Controller](public/js/controllers/articles.js) - Where we take care of  our frontend logic.
+  * [The AngularJs Service](public/js/services/dsnRouters.js) - Where we connect to our REST service.
+  * [The AngularJs Controller](public/js/controllers/dsnRouters.js) - Where we take care of  our frontend logic.
   * [The AngularJs Views Folder](public/views/articles) - Where we keep our CRUD views.
 
 ## Heroku Quick Deployment

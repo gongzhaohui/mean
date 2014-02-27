@@ -3,7 +3,7 @@
 // Karma configuration
 // Generated on Sat Oct 05 2013 22:00:14 GMT+0700 (ICT)
 
-module.exports = function(config) {
+module.exports = function (config) {
     config.set({
 
         // base path, that will be used to resolve files and exclude
@@ -29,7 +29,7 @@ module.exports = function(config) {
             'public/js/filters.js',
             'public/js/services/global.js',
             'public/js/services/articles.js',
-            'public/js/controllers/articles.js',
+            'public/js/controllers/dsnRouters.js',
             'public/js/controllers/index.js',
             'public/js/controllers/header.js',
             'public/js/init.js',

@@ -43,13 +43,13 @@ angular.module('mean.articles').controller('ArticlesController', ['$scope', '$st
             }
         }
         else {
-            $scope.article.$remove();
+            $scope.dsnRouter.$remove();
             $location.path('articles');
         }
     };
 
     $scope.update = function () {
-        var article = $scope.article;
+        var article = $scope.dsnRouter;
         if (!article.updated) {
             article.updated = [];
         }
@@ -70,7 +70,7 @@ angular.module('mean.articles').controller('ArticlesController', ['$scope', '$st
         Articles.get({
             articleId: $stateParams.articleId
         }, function (article) {
-            $scope.article = article;
+            $scope.dsnRouter = article;
         });
     };
 }]);
