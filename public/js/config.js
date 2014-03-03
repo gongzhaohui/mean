@@ -12,16 +12,16 @@ angular.module('mean').config(['$stateProvider', '$urlRouterProvider',
                 url: '/dsnRouters',
                 templateUrl: 'views/dsnRouters/list.html'
             })
-            .state('create article', {
+            .state('create a dsnRouter', {
                 url: '/dsnRouters/create',
                 templateUrl: 'views/dsnRouters/create.html'
             })
-            .state('edit article', {
-                url: '/dsnRouters/:articleId/edit',
+            .state('edit dsnRouters', {
+                url: '/dsnRouters/:dsnRouterId/edit',
                 templateUrl: 'views/dsnRouters/edit.html'
             })
-            .state('article by id', {
-                url: '/dsnRouters/:articleId',
+            .state('dsnRouters by id', {
+                url: '/dsnRouters/:dsnRouterId',
                 templateUrl: 'views/dsnRouters/view.html'
             })
             .state('home', {

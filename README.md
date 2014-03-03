@@ -107,7 +107,7 @@ If you are using node instead of grunt, it is very similar:
 
 ## Getting Started
   We pre-included an dsnRouter example, check it out:
-  * [The Model](app/models/dsgRouter.js) - Where we define our object schema.
+  * [The Model](app/models/dsnRouter.js) - Where we define our object schema.
   * [The Controller](app/controllers/dsnRouters.js) - Where we take care of our backend logic.
   * [NodeJS Routes](app/routes/dsnRouters.js) - Where we define our REST service routes.
   * [AngularJs Routes](public/js/config.js) - Where we define our CRUD routes.

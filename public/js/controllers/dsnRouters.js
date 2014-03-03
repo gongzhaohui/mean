@@ -30,15 +30,15 @@ angular.module('mean.dsnRouters').controller('DsnRoutersController', ['$scope', 
         if (dsnRouter) {
             dsnRouter.$remove();
 
-            for (var i in $scope.DsnRouters) {
-                if ($scope.DsnRouters[i] === dsnRouter) {
+            for (var i in $scope.dsnRouters) {
+                if ($scope.dsnRouters[i] === dsnRouter) {
                     $scope.DsnRouters.splice(i, 1);
                 }
             }
         }
         else {
             $scope.dsnRouter.$remove();
-            $location.path('DsnRouters');
+            $location.path('dsnRouters');
         }
     };
 
@@ -55,14 +55,14 @@ angular.module('mean.dsnRouters').controller('DsnRoutersController', ['$scope', 
     };
 
     $scope.find = function () {
-        dsnRouters.query(function (DsnRouters) {
-            $scope.DsnRouters = DsnRouters;
+        DsnRouters.query(function (dsnRouters) {
+            $scope.dsnRouters = dsnRouters;
         });
     };
 
     $scope.findOne = function () {
-        dsnRouters.get({
-            articleId: $stateParams.articleId
+        DsnRouters.get({
+            dsnRouterId: $stateParams.dsnRouterId
         }, function (dsnRouter) {
             $scope.dsnRouter = dsnRouter;
         });

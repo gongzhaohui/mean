@@ -10,17 +10,17 @@ var mongoose = require('mongoose'),
 /**
  * DsnRouter Schema
  */
-var DsnRouterSchema = new Schema({
+var DsnAppSchema = new Schema({
     created: {
         type: Date,
         default: Date.now
     },
-    title: {
+    name: {
         type: String,
         default: '',
         trim: true
     },
-    content: {
+    description: {
         type: String,
         default: '',
         trim: true
@@ -34,17 +34,17 @@ var DsnRouterSchema = new Schema({
 /**
  * Validations
  */
-DsnRouterSchema.path('title').validate(function (title) {
-    return title.length;
-}, 'Title cannot be blank');
+DsnAppSchema.path('name').validate(function (name) {
+    return name.length;
+}, 'Name cannot be blank');
 
 /**
  * Statics
  */
-DsnRouterSchema.statics.load = function (id, cb) {
+DsnAppSchema.statics.load = function (id, cb) {
     this.findOne({
         _id: id
     }).populate('user', 'name username').exec(cb);
 };
 
-mongoose.model('DsnRouter', DsnRouterSchema);
+mongoose.model('DsnApp', DsnAppSchema);
