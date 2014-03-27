@@ -4,18 +4,18 @@
  * Module dependencies.
  */
 var mongoose = require('mongoose'),
-    DsnRouter = mongoose.model('DsnRouter'),
+    Project = mongoose.model('Project'),
     _ = require('lodash');
 
 
 /**
  * Find project by id
  */
-exports.dsnRouter = function (req, res, next, id) {
-    DsnRouter.load(id, function (err, dsnRouter) {
+exports.project = function (req, res, next, id) {
+    Project.load(id, function (err, project) {
         if (err) return next(err);
-        if (!dsnRouter) return next(new Error('Failed to load dsnRouter ' + id));
-        req.dsnRouter = dsnRouter;
+        if (!project) return next(new Error('Failed to load project ' + id));
+        req.project = project;
         next();
     });
 };
@@ -24,17 +24,17 @@ exports.dsnRouter = function (req, res, next, id) {
  * Create an project
  */
 exports.create = function (req, res) {
-    var dsnRouter = new DsnRouter(req.body);
-    dsnRouter.user = req.user;
+    var project = new Project(req.body);
+    project.user = req.user;
 
-    dsnRouter.save(function (err) {
+    project.save(function (err) {
         if (err) {
             return res.send('users/signup', {
                 errors: err.errors,
-                dsnRouter: dsnRouter
+                project: project
             });
         } else {
-            res.jsonp(dsnRouter);
+            res.jsonp(project);
         }
     });
 };
@@ -43,18 +43,18 @@ exports.create = function (req, res) {
  * Update an project
  */
 exports.update = function (req, res) {
-    var dsnRouter = req.dsnRouter;
+    var project = req.project;
 
-    dsnRouter = _.extend(dsnRouter, req.body);
+    project = _.extend(project, req.body);
 
-    dsnRouter.save(function (err) {
+    project.save(function (err) {
         if (err) {
             return res.send('users/signup', {
                 errors: err.errors,
-                dsnRouter: dsnRouter
+                project: project
             });
         } else {
-            res.jsonp(dsnRouter);
+            res.jsonp(project);
         }
     });
 };
@@ -63,16 +63,16 @@ exports.update = function (req, res) {
  * Delete an project
  */
 exports.destroy = function (req, res) {
-    var dsnRouter = req.dsnRouter;
+    var project = req.project;
 
-    dsnRouter.remove(function (err) {
+    project.remove(function (err) {
         if (err) {
             return res.send('users/signup', {
                 errors: err.errors,
-                dsnRouter: dsnRouter
+                project: project
             });
         } else {
-            res.jsonp(dsnRouter);
+            res.jsonp(project);
         }
     });
 };
@@ -81,20 +81,20 @@ exports.destroy = function (req, res) {
  * Show a project
  */
 exports.show = function (req, res) {
-    res.jsonp(req.dsnRouter);
+    res.jsonp(req.project);
 };
 
 /**
  * List of DsnRouters
  */
 exports.all = function (req, res) {
-    DsnRouter.find().sort('-created').populate('user', 'name username').exec(function (err, dsnrouters) {
+    Project.find().sort('-created').populate('user', 'name username').exec(function (err, project) {
         if (err) {
             res.render('error', {
                 status: 500
             });
         } else {
-            res.jsonp(dsnrouters);
+            res.jsonp(project);
         }
     });
 };

@@ -1,0 +1,51 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-3">
+            <div class="container">left bar</div>
+        </div>
+        <div class="col-md-9">
+            <div class="container">
+                <section data-ng-controller="ProjectsController" data-ng-init="findOne()">
+                    <form class="form-horizontal col-md-6" role="form" data-ng-submit="update()">
+                        <div class="form-group">
+                            <label for="name" class="col-md-2 control-label">Project name</label>
+
+                            <div class="col-md-7">
+                                <input type="text" class="form-control" data-ng-model="project.name" id="name"
+                                       placeholder="Project name" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="row">
+                                <img ng-src="project.favicon" alt="favicon" width="200px" height="200px"
+                                     class="img-rounded col-md-7 col-md-offset-2">
+                            </div>
+                            <div class="row">
+                                <label for="name" class="col-md-2 control-label">Favicon </label>
+
+                                <div class="col-md-7">
+                                    <input type="file" class="form-control" data-ng-model="project.favicon" id="favicon"
+                                           placeholder="path of favicon" required>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="content" class="col-md-2 control-label">Description</label>
+
+                            <div class="col-md-10">
+                                <textarea data-ng-model="project.description" id="content" cols="30" rows="10"
+                                          placeholder="Description"
+                                          class="form-control" required></textarea>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-offset-2 col-md-10">
+                                <button type="submit" class="btn btn-default">Submit</button>
+                            </div>
+                        </div>
+                    </form>
+                </section>
+            </div>
+        </div>
+    </div>
+</div>

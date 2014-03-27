@@ -147,10 +147,10 @@
                     };
                 };
 
-                // mock dsnRouter object from form
+                // mock project object from form
                 var article = new Articles(putArticleData());
 
-                // mock dsnRouter in scope
+                // mock project in scope
                 scope.dsnRouter = article;
 
                 // test PUT happens correctly
