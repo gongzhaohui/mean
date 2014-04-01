@@ -13,7 +13,7 @@ angular.module('mean.projects').controller('ProjectsController', ['$scope', '$st
             favicon: this.favicon
         });
         project.$save(function (response) {
-            $location.path('projects/' + response._id);
+            $location.path('orders/' + response._id);
         });
 
         this.name = '';
@@ -33,7 +33,7 @@ angular.module('mean.projects').controller('ProjectsController', ['$scope', '$st
         }
         else {
             $scope.project.$remove();
-            $location.path('projects');
+            $location.path('orders');
         }
     };
 
@@ -45,7 +45,7 @@ angular.module('mean.projects').controller('ProjectsController', ['$scope', '$st
         project.updated.push(new Date().getTime());
 
         project.$update(function () {
-            $location.path('projects/' + project._id);
+            $location.path('orders/' + project._id);
         });
     };
 

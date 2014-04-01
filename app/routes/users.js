@@ -1,5 +1,6 @@
 'use strict';
 
+//todo role assigning
 // User routes use users controller
 var users = require('../controllers/users');
 
