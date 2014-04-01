@@ -29,7 +29,7 @@ exports.signin = function (req, res) {
 exports.signup = function (req, res) {
     res.render('user/signup', {
         title: 'Sign up',
-        user: new Employee()
+        user: new User()
     });
 };
 
@@ -52,7 +52,7 @@ exports.session = function (req, res) {
  * Create user
  */
 exports.create = function (req, res, next) {
-    var user = new Employee(req.body);
+    var user = new User(req.body);
     var message = null;
 
     user.provider = 'local';
