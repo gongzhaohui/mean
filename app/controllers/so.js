@@ -5,11 +5,33 @@
  */
 
 var mongoose = require('mongoose'),
-    SO = mongoose.model('SO'),
-    _ = require('lodash');
+    SO = mongoose.model('SO')//,
+//   _ = require('lodash');
+    ;
+var getNextSequence = function () {
+    var counter = mongoose.Schema('Counter');
+    var seq = counter.getNextSequence('S', 1);
+    //var seq = 1;
+    var seqStr = '000000000' + seq;
+    seqStr = seqStr.slice(seqStr.length - 9);
+    return 'S' + seqStr;
+};
+
 exports.create = function (req, res) {
-    var so = new SO(req.body);
-    so.aId = req.user;
+    debugger;
+    var so = new SO({
+        _id: getNextSequence(),
+        soDate: Date(),
+        deuDate: Date(),
+        items: [
+            {
+                rowNo: 1,
+                quantity: 4
+            }
+        ]
+    });
+    //req.body);
+//    so.aId = req.user;
 
     so.save(function (err) {
         if (err) {

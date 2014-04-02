@@ -1,61 +1,56 @@
 'use strict';
-
-/**
- * Created by gong on 14-3-31.
- */
 var mongoose = require('mongoose'),
     Schema = mongoose.Schema;
-/**
- * @author gong
- */
-var CustomerSchema = new Schema({
-    _id: String,
-    name: {
-        type: String,
-        required: true,
-        trim: true
-    },
-    tel: {
-        type: String,
-        match: [/^(0[0-9]{2,3}-)?([2-9][0-9]{6,7})+(-[0-9]{1,4})?$/, '电话号码格式不正确。']
-    },
-    address: {
-        street: String,
-        city: String,
-        province: String,
-        zip: {
-            type: String,
-            match: [/^[1-9][0-9]{5}$/, '邮编格式不正确。'],
-            trim: true
-        }
-    },
-    contact: {
+var CustomerSchema = new Schema(
+    {
+        _id: String,
         name: {
             type: String,
             required: true,
-            trim: true},
-        gender: {
-            type: String,
-            enum: ['男', '女']
+            trim: true
         },
-        age: Number,
-        mobile: {
+        tel: {
             type: String,
-            match: [/^(1[35][0-9]{9})$/, '手机号格式不准确。']},
-        email: String,
-        photo: String,
-        hobbies: [String]
-    },
-    salesman: {
-        type: Schema.ObjectId,
-        ref: 'User'
-    },
-    created: {
-        type: Date,
-        default: Date.now
-    }
-
-});
+            match: [/^(0[0-9]{2,3}-)?([2-9][0-9]{6,7})+(-[0-9]{1,4})?$/, '电话号码格式不正确。']
+        },
+        address: {
+            street: String,
+            city: String,
+            province: String,
+            zip: {
+                type: String,
+                match: [/^[1-9][0-9]{5}$/, '邮编格式不正确。'],
+                trim: true
+            }
+        },
+        contact: {
+            name: {
+                type: String,
+                required: true,
+                trim: true
+            },
+            gender: {
+                type: String,
+                enum: ['男', '女']
+            },
+            age: Number,
+            mobile: {
+                type: String,
+                match: [/^(1[35][0-9]{9})$/, '手机号格式不准确。']
+            },
+            email: String,
+            photo: String,
+            hobbies: [String]
+        },
+        salesman: {
+            type: Schema.ObjectId,
+            ref: 'User'
+        },
+        created: {
+            type: Date,
+            default: Date.now
+        }
+    });
 
 /**
  * Validations
@@ -63,7 +58,7 @@ var CustomerSchema = new Schema({
 /*
  CustomerSchema.path('controller').validate(function (controller) {
  return controller.length;
-}, 'Controller cannot be blank');
+ }, 'Controller cannot be blank');
  */
 /**
  * Statics

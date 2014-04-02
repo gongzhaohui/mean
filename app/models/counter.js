@@ -10,11 +10,11 @@ var CounterSchema = new Schema({
     _id: String,
     seq: Number
 });
-CounterSchema.statics.getNextSequence = function (name, inc) {
+CounterSchema.statics.getNextSequence = function (code, inc) {
     var i = inc ? inc : 1;
     var ret = this.collection.findAndModify(
         {
-            query: { _id: name },
+            query: { _id: code },
             update: { $inc: { seq: i } },
             new: true,
             upsert: true

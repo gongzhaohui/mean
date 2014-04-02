@@ -9,7 +9,8 @@ var mongoose = require('mongoose'),
  * Role Schema
  */
 var RoleSchema = new Schema({
-    name: String
-})
+    name: String,
+    auth: []
+});
 
 mongoose.model('Role', RoleSchema);

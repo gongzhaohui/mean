@@ -1,4 +1,4 @@
-'use strict'
+'use strict';
 
 /**
  * Created by gong on 14-3-31.
@@ -27,15 +27,5 @@ var SOSchema = new Schema({
         }
     ]
 });
-SOSchema.pre('save', function (next) {
-    if (this.isNew) {
-        var counter = mongoose.Schema('counter');
-        var seq = counter.getNextSequence('S');
-        var seqStr = "000000000" + seq;
-        seqStr = seqStr.slice(seqStr.length - 9);
-        this._id = 'S' + seqStr;
-    }
-    ;
-    next();
-});
+
 mongoose.model('SO', SOSchema);

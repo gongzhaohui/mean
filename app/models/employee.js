@@ -14,7 +14,8 @@ var EmployeeSchema = new Schema({
         name: String,
         gender: {
             type: String,
-            enum: ['男', '女']},
+            enum: ['男', '女']
+        },
         email: String,
         username: {
             type: String,
@@ -33,7 +34,10 @@ var EmployeeSchema = new Schema({
         },
         employedDate: Date,
         department: String,
-        role: {type: Schema.ObjectID, ref: 'role'}
+        role: {
+            type: Schema.ObjectId,
+            ref: 'role'
+        }
     })
     ;
 
