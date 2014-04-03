@@ -8,39 +8,42 @@ var mongoose = require('mongoose'),
     SO = mongoose.model('SO')//,
 //   _ = require('lodash');
     ;
-var getNextSequence = function () {
-    var counter = mongoose.Schema('Counter');
-    var seq = counter.getNextSequence('S', 1);
-    //var seq = 1;
-    var seqStr = '000000000' + seq;
-    seqStr = seqStr.slice(seqStr.length - 9);
-    return 'S' + seqStr;
+var newSO = function (req, res) {
+    var counter = mongoose.model('Counter');
+    counter.getNextSequence('S', 1, function (err, result) {
+        if (!err) {
+            var seqStr = '000000000' + result.seq;
+            seqStr = seqStr.slice(seqStr.length - 9);
+            var so = new SO({
+                _id: 'S' + seqStr,
+                soDate: Date(),
+                deuDate: Date(),
+                items: [
+                    {
+                        rowNo: 1,
+                        quantity: 5
+                    }
+                ]
+            });
+            //req.body);
+//    so.aId = req.user;
+
+            so.save(function (err) {
+                if (err) {
+                    return res.send('user/signup', {
+                        errors: err.errors,
+                        so: so
+                    });
+                } else {
+                    res.jsonp(so);
+                }
+            });
+        }
+        else res.jsonp(err);
+    });
 };
 
 exports.create = function (req, res) {
-    debugger;
-    var so = new SO({
-        _id: getNextSequence(),
-        soDate: Date(),
-        deuDate: Date(),
-        items: [
-            {
-                rowNo: 1,
-                quantity: 4
-            }
-        ]
-    });
-    //req.body);
-//    so.aId = req.user;
+    newSO(req, res);
 
-    so.save(function (err) {
-        if (err) {
-            return res.send('user/signup', {
-                errors: err.errors,
-                so: so
-            });
-        } else {
-            res.jsonp(so);
-        }
-    });
 };

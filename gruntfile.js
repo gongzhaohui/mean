@@ -81,7 +81,6 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-karma');
     grunt.loadNpmTasks('grunt-nodemon');
     grunt.loadNpmTasks('grunt-concurrent');
-    grunt.loadNpmTasks('grunt-node-inspect');
     grunt.loadNpmTasks('grunt-env');
 
     //Making grunt default to force in order not to break the project.

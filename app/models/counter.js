@@ -10,16 +10,8 @@ var CounterSchema = new Schema({
     _id: String,
     seq: Number
 });
-CounterSchema.statics.getNextSequence = function (code, inc) {
+CounterSchema.statics.getNextSequence = function (code, inc, callback) {
     var i = inc ? inc : 1;
-    var ret = this.collection.findAndModify(
-        {
-            query: { _id: code },
-            update: { $inc: { seq: i } },
-            new: true,
-            upsert: true
-        }
-    );
-    return ret.seq;
+    this.findOneAndUpdate({ _id: code }, { $inc: { seq: i } }, {new: true, upsert: true}, callback);
 };
 mongoose.model('Counter', CounterSchema);
