@@ -3,7 +3,6 @@
 /**
  * Created by gong on 14-3-31.
  */
-
 var mongoose = require('mongoose'),
     Schema = mongoose.Schema;
 
@@ -14,6 +13,7 @@ var SOSchema = new Schema({
     cId: {type: Schema.ObjectId, ref: 'Customer'},
     soDate: Date,
     deuDate: Date,
+    num: Number,
     voucherStatus: {type: Schema.ObjectId, ref: 'VoucherStatus'},
     items: [
         {

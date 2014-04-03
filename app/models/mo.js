@@ -10,8 +10,7 @@ var MOSchema = new Schema({
     _id: String,
     moDate: Date,
     aId: String,
-    soId: String,
-    soRow: Number,
+    source: {_id: String, ref: String, row: Number},
     VoucherStatus: Number,
     items: [
         {

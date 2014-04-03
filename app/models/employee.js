@@ -49,8 +49,8 @@ EmployeeSchema.virtual('password').set(function (password) {
     this.salt = this.makeSalt();
     this.hashed_password = this.encryptPassword(password);
 }).get(function () {
-        return this._password;
-    });
+    return this._password;
+});
 
 /**
  * Validations
