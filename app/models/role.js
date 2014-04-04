@@ -10,7 +10,15 @@ var mongoose = require('mongoose'),
  */
 var RoleSchema = new Schema({
     name: String,
-    auth: []
+    auth: [
+        {
+            route: {type: Schema.ObjectId, ref: 'routes'},
+            c: Boolean,
+            u: Boolean,
+            r: Boolean,
+            d: Boolean
+        }
+    ]
 });
 
 mongoose.model('Role', RoleSchema);

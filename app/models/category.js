@@ -8,7 +8,8 @@ var mongoose = require('mongoose'),
 
 var CategorySchema = new Schema({
     _id: String,
-    seq: Number
+    description: String,
+    group: String
 });
 CategorySchema.statics = {};
 CategorySchema.methods = {};

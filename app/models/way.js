@@ -6,10 +6,10 @@
 var mongoose = require('mongoose'),
     Schema = mongoose.Schema;
 
-var TempSchema = new Schema({
+var WaySchema = new Schema({
     _id: Number,
     way: String
 });
-TempSchema.statics = {};
-TempSchema.methods = {};
-mongoose.model('Temp', TempSchema);
+WaySchema.statics = {};
+WaySchema.methods = {};
+mongoose.model('Way', WaySchema);
