@@ -13,12 +13,12 @@ var InventorySchema = new Schema({
     toolNo: {type: String, required: true},
     drawingNo: {type: String, required: true},
     pricing: {
-        buying: {type: Number, default: 0},
-        selling: {type: Number, default: 0}
+        cost: {type: Number, default: 0},
+        price: {type: Number, default: 0}
     },
     category: {type: Schema.ObjectId, ref: 'Category'},
     way: {type: Schema.ObjectId, ref: 'Way'},
-    quantity: {type: Number, default: 0},
+    qty: {type: Number, default: 0},
     assembly: Boolean,
     semiFinish: Boolean
 });

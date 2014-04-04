@@ -6,16 +6,15 @@
 var mongoose = require('mongoose'),
     Schema = mongoose.Schema;
 
-var InboundSchema = new Schema({
+var OutboundSchema = new Schema({
     _id: String,
     date: Date,
     source: {_id: String, ref: String, row: Number},
-    iId: {type: Schema.ObjectId, ref: 'Inventory'},
-    qty: Number,
     wId: {type: Schema.ObjectId, ref: 'Warehouse'},
-    operator: {type: Schema.ObjectId, ref: 'Employee'}
-
+    operator: {type: Schema.ObjectId, ref: 'Employee'},
+    iId: {type: Schema.ObjectId, ref: 'Inventory'},
+    qty: Number
 });
-InboundSchema.statics = {};
-InboundSchema.methods = {};
-mongoose.model('Inbound', InboundSchema);
+OutboundSchema.statics = {};
+OutboundSchema.methods = {};
+mongoose.model('Outbound', OutboundSchema);

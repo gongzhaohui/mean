@@ -1,0 +1,20 @@
+'use strict';
+
+/**
+ * Created by gong on 14-4-1.
+ */
+var mongoose = require('mongoose'),
+    Schema = mongoose.Schema;
+
+var InboundSchema = new Schema({
+    _id: String,
+    date: Date,
+    source: {_id: String, ref: String, row: Number},
+    wId: {type: Schema.ObjectId, ref: 'Warehouse'},
+    operator: {type: Schema.ObjectId, ref: 'Employee'},
+    iId: {type: Schema.ObjectId, ref: 'Inventory'},
+    qty: Number
+});
+InboundSchema.statics = {};
+InboundSchema.methods = {};
+mongoose.model('Inbound', InboundSchema);

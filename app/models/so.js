@@ -19,7 +19,7 @@ var SOSchema = new Schema({
         {
             rowNo: Number,
             iId: {type: Schema.ObjectId, ref: 'Inventory'},
-            quantity: Number,
+            qty: Number,
             category: {type: Schema.ObjectId, ref: 'Category'},
             way: {type: Schema.ObjectId, ref: 'ProducingWay'},
             price: Number,

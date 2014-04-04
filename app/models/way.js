@@ -7,8 +7,8 @@ var mongoose = require('mongoose'),
     Schema = mongoose.Schema;
 
 var TempSchema = new Schema({
-    _id: String,
-    seq: Number
+    _id: Number,
+    way: String
 });
 TempSchema.statics = {};
 TempSchema.methods = {};

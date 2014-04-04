@@ -16,7 +16,7 @@ var MOSchema = new Schema({
         {
             rowNo: Number,
             iId: {type: Schema.ObjectId, ref: 'Inventory'},
-            quantity: Number,
+            qty: Number,
             dueDate: Date,
             way: {type: Schema.ObjectId, ref: 'Way'},
             status: Number,
@@ -47,7 +47,7 @@ var MOSchema = new Schema({
                         operator: String,
                         qty: Number,
                         reason: String,
-                        method: {type: Schema.ObjectId, ref: 'Method'}
+                        method: {type: Schema.ObjectId, ref: 'RepairMethod'}
                     }
                 }
             ],
@@ -61,7 +61,7 @@ var MOSchema = new Schema({
                 operator: String,
                 qty: Number,
                 reason: String,
-                method: {type: Schema.ObjectId, ref: 'Method'}
+                method: {type: Schema.ObjectId, ref: 'RepairMethod'}
             }
         }
     ]
