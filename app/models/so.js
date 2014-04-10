@@ -27,5 +27,6 @@ var SOSchema = new Schema({
         }
     ]
 });
-
+SOSchema.statics = {};
+SOSchema.methods = {};
 mongoose.model('SO', SOSchema);
