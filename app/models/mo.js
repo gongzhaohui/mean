@@ -11,7 +11,7 @@ var MOSchema = new Schema({
     moDate: Date,
     aId: String,
     source: {_id: String, ref: String, row: Number},
-    VoucherStatus: Number,
+    voucherStatus: {type: Schema.ObjectId, ref: 'VoucherStatus'},
     items: [
         {
             rowNo: Number,
