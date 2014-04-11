@@ -9,8 +9,8 @@ var mongoose = require('mongoose'),
 var InvoiceSchema = new Schema({
     _id: String,
     date: Date,
-    operator: {type: Schema.ObjectId, ref: 'Mo'},
-    cid: {type: Schema.ObjectId, ref: 'Mo'},
+    operator: {type: Schema.ObjectId, ref: 'Employee'},
+    cId: {type: Schema.ObjectId, ref: 'Employee'},
     items: [
         {
             source: {_id: String, ref: String, row: Number},

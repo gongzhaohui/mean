@@ -12,7 +12,7 @@ var RoleSchema = new Schema({
     name: String,
     auth: [
         {
-            route: {type: Schema.ObjectId, ref: 'routes'},
+            route: {type: Schema.ObjectId, ref: 'Route'},
             c: Boolean,
             u: Boolean,
             r: Boolean,

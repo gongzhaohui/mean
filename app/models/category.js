@@ -8,8 +8,18 @@ var mongoose = require('mongoose'),
 
 var CategorySchema = new Schema({
     _id: String,
+    path: String,
     description: String,
-    group: String
+    created: {
+        date: {type: Date, default: Date.now},
+        eId: {type: Schema.ObjectId, ref: 'Employee'}
+    },
+    updated: [
+        {
+            date: {type: Date, default: Date.now},
+            eId: {type: Schema.ObjectId, ref: 'Employee'}
+        }
+    ]
 });
 CategorySchema.statics = {};
 CategorySchema.methods = {};
