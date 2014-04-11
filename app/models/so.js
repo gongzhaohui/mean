@@ -13,17 +13,29 @@ var SOSchema = new Schema({
     cId: {type: Schema.ObjectId, ref: 'Customer'},
     soDate: Date,
     deuDate: Date,
-    num: Number,
     voucherStatus: {type: Schema.ObjectId, ref: 'VoucherStatus'},
     items: [
         {
             rowNo: Number,
             iId: {type: Schema.ObjectId, ref: 'Inventory'},
-            qty: Number,
+            qty: {
+                ordered: Number,
+                delivered: {type: Number, default: 0}
+            },
             category: {type: Schema.ObjectId, ref: 'Category'},
-            way: {type: Schema.ObjectId, ref: 'ProducingWay'},
+            way: {type: Schema.ObjectId, ref: 'Way'},
             price: Number,
             deuDate: Date
+        }
+    ],
+    created: {
+        date: {type: Date, default: Date.now},
+        eId: {type: Schema.ObjectId, ref: 'Employee'}
+    },
+    updated: [
+        {
+            date: {type: Date, default: Date.now},
+            eId: {type: Schema.ObjectId, ref: 'Employee'}
         }
     ]
 });

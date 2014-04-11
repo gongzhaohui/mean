@@ -8,7 +8,6 @@ var mongoose = require('mongoose'),
 
 var InventorySchema = new Schema({
     _id: String,
-    date: Date,
     name: {type: String, required: true},
     toolNo: {type: String, required: true},
     drawingNo: {type: String, required: true},
@@ -18,9 +17,27 @@ var InventorySchema = new Schema({
     },
     category: {type: Schema.ObjectId, ref: 'Category'},
     way: {type: Schema.ObjectId, ref: 'Way'},
-    qty: {type: Number, default: 0},
+    available: {type: Number, default: 0},
+    children: [
+        {
+            seq: Number,
+            iId: {type: Schema.ObjectId, ref: 'Inventory'},
+            way: {type: Schema.ObjectId, ref: 'Way'},
+            qty: Number
+        }
+    ],
     assembly: Boolean,
-    semiFinish: Boolean
+    semiFinish: Boolean,
+    created: {
+        date: {type: Date, default: Date.now},
+        eId: {type: Schema.ObjectId, ref: 'Employee'}
+    },
+    updated: [
+        {
+            date: {type: Date, default: Date.now},
+            eId: {type: Schema.ObjectId, ref: 'Employee'}
+        }
+    ]
 });
 InventorySchema.statics = {};
 InventorySchema.methods = {};

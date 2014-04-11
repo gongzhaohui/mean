@@ -34,13 +34,8 @@ var EmployeeSchema = new Schema({
         },
         employedDate: Date,
         department: String,
-        role: {
-            type: Schema.ObjectId,
-            ref: 'role'
-        }
-    })
-    ;
-
+    role: {type: Schema.ObjectId, ref: 'role'}
+});
 /**
  * Virtuals
  */
