@@ -9,21 +9,21 @@ var mongoose = require('mongoose'),
 var SOSchema = new Schema({
     _id: String,
     aId: {type: Schema.ObjectId, ref: 'Employee'},
-    eId: {type: Schema.ObjectId, ref: 'Employee'},
-    cId: {type: Schema.ObjectId, ref: 'Customer'},
-    soDate: Date,
-    deuDate: Date,
-    voucherStatus: {type: Schema.ObjectId, ref: 'VoucherStatus'},
+    eId: {type: Schema.ObjectId, ref: 'Employee', index: true},
+    cId: {type: Schema.ObjectId, ref: 'Customer', index: true},
+    soDate: {type: Date, index: true},
+    deuDate: {type: Date, index: true},
+    voucherStatus: {type: Schema.ObjectId, ref: 'VoucherStatus', index: true},
     items: [
         {
-            rowNo: Number,
-            iId: {type: Schema.ObjectId, ref: 'Inventory'},
+            rowNo: {type: Number, index: true},
+            iId: {type: Schema.ObjectId, ref: 'Inventory', index: true},
             qty: {
                 ordered: Number,
                 delivered: {type: Number, default: 0}
             },
-            category: {type: Schema.ObjectId, ref: 'Category'},
-            way: {type: Schema.ObjectId, ref: 'Way'},
+            category: {type: Schema.ObjectId, ref: 'Category', index: true},
+            way: {type: Schema.ObjectId, ref: 'Way', index: true},
             price: Number,
             deuDate: Date
         }

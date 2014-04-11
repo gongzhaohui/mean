@@ -5,7 +5,10 @@
  */
 var mongoose = require('mongoose'),
     Schema = mongoose.Schema;
-
+/*
+ *  @deprecated
+ *  move into Inventory Schema 2014.4.11
+ */
 var BomSchema = new Schema({
     _id: String,
     date: Date,
@@ -25,4 +28,5 @@ var BomSchema = new Schema({
 });
 BomSchema.statics = {};
 BomSchema.methods = {};
+
 mongoose.model('Bom', BomSchema);

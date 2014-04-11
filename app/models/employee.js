@@ -11,29 +11,29 @@ var mongoose = require('mongoose'),
  * Employee Schema
  */
 var EmployeeSchema = new Schema({
-        name: String,
-        gender: {
-            type: String,
-            enum: ['男', '女']
-        },
-        email: String,
-        username: {
-            type: String,
-            unique: true
-        },
-        hashed_password: String,
-        provider: String,
-        salt: String,
-        birthday: Date,
-        address: {
-            province: String,
-            city: String,
-            distinct: String,
-            street: String,
-            zip: String
-        },
-        employedDate: Date,
-        department: String,
+    name: String,
+    gender: {
+        type: String,
+        enum: ['男', '女']
+    },
+    email: String,
+    username: {
+        type: String,
+        unique: true
+    },
+    hashed_password: String,
+    provider: String,
+    salt: String,
+    birthday: Date,
+    address: {
+        province: String,
+        city: String,
+        distinct: String,
+        street: String,
+        zip: String
+    },
+    employedDate: Date,
+    department: String,
     role: {type: Schema.ObjectId, ref: 'role'}
 });
 /**
