@@ -9,12 +9,13 @@ var mongoose = require('mongoose'),
 var InboundSchema = new Schema({
     _id: String,
     date: Date,
-    source: {_id: String, ref: String, row: Number},
+    source: {_id: String, row: Number, ref: String},
     wId: {type: Schema.ObjectId, ref: 'Warehouse'},
     operator: {type: Schema.ObjectId, ref: 'Employee'},
     iId: {type: Schema.ObjectId, ref: 'Inventory'},
     qty: Number
 });
+InboundSchema.index({source: 1})
 InboundSchema.statics = {};
 InboundSchema.methods = {};
 mongoose.model('Inbound', InboundSchema);

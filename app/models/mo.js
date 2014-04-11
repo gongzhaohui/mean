@@ -60,11 +60,12 @@ var MOSchema = new Schema({
     eId: {type: Schema.ObjectId, ref: 'Employee'},
     moDate: {type: Date, index: true},
     deuDate: {type: Date, index: true},
-    source: {_id: String, ref: String, row: Number, index: true},
+    source: {_id: String, row: Number, ref: String},
     voucherStatus: {type: Schema.ObjectId, ref: 'VoucherStatus', index: true},
     items: [MOItemSchema]
 
 });
+MOSchema.index({source: 1})
 MOSchema.statics = {};
 MOSchema.methods = {};
 mongoose.model('MO', MOSchema);
