@@ -9,20 +9,20 @@ var mongoose = require('mongoose'),
 var ReceiptSchema = new Schema({
     id: String,
     date: Date,
-    operator: {type: Schema.ObjectId, ref: 'Employee'},
-    cId: {type: Schema.ObjectId, ref: 'Customer'},
-    iId: {type: Schema.ObjectId, ref: 'Invoice'},
+    operator: {type: String, ref: 'Employee'},
+    cId: {type: String, ref: 'Customer'},
+    iId: {type: String, ref: 'Invoice'},
     iAmount: Number,
     rAmount: Number,
-    VoucherStatus: {type: Schema.ObjectId, ref: 'VoucherStatus'},
+    VoucherStatus: {type: String, ref: 'VoucherStatus'},
     created: {
         date: {type: Date, default: Date.now},
-        eId: {type: Schema.ObjectId, ref: 'Employee'}
+        eId: {type: String, ref: 'Employee'}
     },
     updated: [
         {
             date: {type: Date, default: Date.now},
-            eId: {type: Schema.ObjectId, ref: 'Employee'}
+            eId: {type: String, ref: 'Employee'}
         }
     ]
 });

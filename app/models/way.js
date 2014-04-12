@@ -7,7 +7,7 @@ var mongoose = require('mongoose'),
     Schema = mongoose.Schema;
 
 var WaySchema = new Schema({
-    _id: Number,
+    _id: String,
     way: String
 });
 WaySchema.statics = {};

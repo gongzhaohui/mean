@@ -7,7 +7,7 @@ var mongoose = require('mongoose'),
     Schema = mongoose.Schema;
 
 var WareHouseSchema = new Schema({
-    _id: Number,
+    _id: String,
     WareHouse: String
 });
 WareHouseSchema.statics = {};

@@ -8,7 +8,7 @@ var mongoose = require('mongoose'),
 
 var TempSchema = new Schema({
     date: Date,
-    iId: {type: Schema.ObjectId, ref: 'Inventory'},
+    iId: {type: String, ref: 'Inventory'},
     price: {
         origin: Number,
         new: Number

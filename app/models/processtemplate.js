@@ -11,7 +11,7 @@ var ProcessTemplateSchema = new Schema({
     name: {type: String, unique: true},
     Operations: [
         {
-            rowNo: Number,
+            row: Number,
             station: String,
             job: String,
             tasktime: Number,
@@ -20,12 +20,12 @@ var ProcessTemplateSchema = new Schema({
     ],
     created: {
         date: {type: Date, default: Date.now},
-        eId: {type: Schema.ObjectId, ref: 'Employee'}
+        eId: {type: String, ref: 'Employee'}
     },
     updated: [
         {
             date: {type: Date, default: Date.now},
-            eId: {type: Schema.ObjectId, ref: 'Employee'}
+            eId: {type: String, ref: 'Employee'}
         }
     ]});
 ProcessTemplateSchema.statics = {};

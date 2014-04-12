@@ -42,15 +42,15 @@ var CustomerSchema = new Schema(
             photo: String,
             hobbies: [String]
         },
-        salesman: {type: Schema.ObjectId, ref: 'Employee'},
+        salesman: {type: String, ref: 'Employee'},
         created: {
             date: {type: Date, default: Date.now},
-            eId: {type: Schema.ObjectId, ref: 'Employee'}
+            eId: {type: String, ref: 'Employee'}
         },
         updated: [
             {
                 date: {type: Date, default: Date.now},
-                eId: {type: Schema.ObjectId, ref: 'Employee'}
+                eId: {type: String, ref: 'Employee'}
             }
         ]
     });

@@ -12,15 +12,15 @@ var mongoose = require('mongoose'),
 var BomSchema = new Schema({
     _id: String,
     date: Date,
-    iId: {type: Schema.ObjectId, ref: 'Inventory'},
+    iId: {type: String, ref: 'Inventory'},
     name: {type: String, required: true},
     toolNo: {type: String, required: true},
     drawingNo: {type: String, required: true},
     children: [
         {
             seq: Number,
-            iId: {type: Schema.ObjectId, ref: 'Inventory'},
-            way: {type: Schema.ObjectId, ref: 'Way'},
+            iId: {type: String, ref: 'Inventory'},
+            way: {type: String, ref: 'Way'},
             quantity: Number
         }
     ]

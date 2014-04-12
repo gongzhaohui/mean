@@ -5,39 +5,38 @@
  */
 var mongoose = require('mongoose'),
     Schema = mongoose.Schema;
-
+var SOItemSchema = new Schema({
+    row: {type: Number, index: true},
+    iId: {type: String, ref: 'Inventory', index: true},
+    qty: {
+        ordered: Number,
+        delivered: {type: Number, default: 0}
+    },
+    category: {type: String, ref: 'Category', index: true},
+    way: {type: String, ref: 'Way', index: true},
+    price: Number,
+    deuDate: Date
+});
 var SOSchema = new Schema({
     _id: String,
-    aId: {type: Schema.ObjectId, ref: 'Employee'},
-    eId: {type: Schema.ObjectId, ref: 'Employee', index: true},
-    cId: {type: Schema.ObjectId, ref: 'Customer', index: true},
+    aId: {type: String, ref: 'Employee'},
+    eId: {type: String, ref: 'Employee', index: true},
+    cId: {type: String, ref: 'Customer', index: true},
     deuDate: {type: Date, index: true},
-    voucherStatus: {type: Schema.ObjectId, ref: 'VoucherStatus', index: true},
-    items: [
-        {
-            rowNo: {type: Number, index: true},
-            iId: {type: Schema.ObjectId, ref: 'Inventory', index: true},
-            qty: {
-                ordered: Number,
-                delivered: {type: Number, default: 0}
-            },
-            category: {type: Schema.ObjectId, ref: 'Category', index: true},
-            way: {type: Schema.ObjectId, ref: 'Way', index: true},
-            price: Number,
-            deuDate: Date
-        }
-    ],
+    voucherStatus: {type: String, ref: 'VoucherStatus', index: true},
+    items: [SOItemSchema],
     created: {
-        date: {type: Date, default: Date.now},
-        eId: {type: Schema.ObjectId, ref: 'Employee'}
+        date: {type: Date, default: Date.now, index: true},
+        eId: {type: String, ref: 'Employee', index: true}
     },
     updated: [
         {
             date: {type: Date, default: Date.now},
-            eId: {type: Schema.ObjectId, ref: 'Employee'}
+            eId: {type: String, ref: 'Employee'}
         }
     ]
 });
+SOSchema.index({_id: 1, 'items..row': 1});
 SOSchema.statics = {};
 SOSchema.methods = {};
 mongoose.model('SO', SOSchema);

@@ -7,7 +7,7 @@ var mongoose = require('mongoose'),
     Schema = mongoose.Schema;
 
 var VoucherStatusSchema = new Schema({
-    _id: Number,
+    _id: String,
     VoucherStatus: String
 });
 VoucherStatusSchema.statics = {};

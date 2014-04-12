@@ -5,31 +5,33 @@
  */
 var mongoose = require('mongoose'),
     Schema = mongoose.Schema;
-
+var InvoiceItemSchema = new Schema({
+    source: {
+        _id: {type: String},
+        row: {type: Number},
+        ref: {type: String}
+    },
+    soRow: {type: Number, index: true},
+    iId: {type: String, ref: 'Inventory'},
+    qty: Number,
+    price: Number
+});
 var InvoiceSchema = new Schema({
     _id: String,
     date: Date,
-    operator: {type: Schema.ObjectId, ref: 'Employee'},
-    cId: {type: Schema.ObjectId, ref: 'Employee'},
-    items: [
-        {
-            source: {_id: String, ref: String, row: Number},
-            soRow: Number,
-            iId: {type: Schema.ObjectId, ref: 'Inventory'},
-            qty: Number,
-            price: Number
-        }
-    ],
+    operator: {type: String, ref: 'Employee'},
+    cId: {type: String, ref: 'Employee'},
+    items: [InvoiceItemSchema],
     amount: Number,
-    VoucherStatus: {type: Schema.ObjectId, ref: 'VoucherStatus'},
+    VoucherStatus: {type: String, ref: 'VoucherStatus'},
     created: {
         date: {type: Date, default: Date.now},
-        eId: {type: Schema.ObjectId, ref: 'Employee'}
+        eId: {type: String, ref: 'Employee'}
     },
     updated: [
         {
             date: {type: Date, default: Date.now},
-            eId: {type: Schema.ObjectId, ref: 'Employee'}
+            eId: {type: String, ref: 'Employee'}
         }
     ]
 });

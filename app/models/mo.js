@@ -7,8 +7,8 @@ var mongoose = require('mongoose'),
     Schema = mongoose.Schema;
 
 var OperationSchema = new Schema({
-    rowNo: Number,
-    station: String,
+    row: {type: Number, index: true},
+    station: {type: String, index: true},
     job: String,
     tasktime: Number,
     comment: String,
@@ -32,15 +32,15 @@ var OperationSchema = new Schema({
         operator: String,
         qty: Number,
         reason: String,
-        method: {type: Schema.ObjectId, ref: 'RepairMethod'}
+        method: {type: String, ref: 'RepairMethod'}
     }
 });
 var MOItemSchema = new Schema({
-    rowNo: {type: Number, index: true},
-    iId: {type: Schema.ObjectId, ref: 'Inventory', index: true},
+    row: {type: Number, index: true},
+    iId: {type: String, ref: 'Inventory', index: true},
     qty: Number,
     dueDate: Date,
-    way: {type: Schema.ObjectId, ref: 'Way'},
+    way: {type: String, ref: 'Way'},
     status: Number,
     operations: [OperationSchema],
     check: {
@@ -53,30 +53,35 @@ var MOItemSchema = new Schema({
         operator: String,
         qty: Number,
         reason: String,
-        method: {type: Schema.ObjectId, ref: 'RepairMethod'}
+        method: {type: String, ref: 'RepairMethod'}
     }
 });
 var MOSchema = new Schema({
     _id: String,
-    eId: {type: Schema.ObjectId, ref: 'Employee'},
+    eId: {type: String, ref: 'Employee'},
     moDate: {type: Date, index: true},
     deuDate: {type: Date, index: true},
-    source: {_id: String, row: Number, ref: String},
-    voucherStatus: {type: Schema.ObjectId, ref: 'VoucherStatus', index: true},
+    source: {
+        _id: {type: String},
+        row: {type: Number},
+        ref: {type: String}
+    },
+    voucherStatus: {type: String, ref: 'VoucherStatus', index: true},
     items: [MOItemSchema],
     created: {
-        date: {type: Date, default: Date.now},
-        eId: {type: Schema.ObjectId, ref: 'Employee'}
+        date: {type: Date, default: Date.now, index: true},
+        eId: {type: String, ref: 'Employee', index: true}
     },
     updated: [
         {
             date: {type: Date, default: Date.now},
-            eId: {type: Schema.ObjectId, ref: 'Employee'}
+            eId: {type: String, ref: 'Employee'}
         }
     ]
 
 });
-MOSchema.index({source: 1});
+MOSchema.index({'source._id': 1, 'source.row': 1});
+MOSchema.index({'_id': 1, 'items..row': 1});
 MOSchema.statics = {};
 MOSchema.methods = {};
 mongoose.model('MO', MOSchema);

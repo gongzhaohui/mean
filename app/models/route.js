@@ -7,7 +7,7 @@ var mongoose = require('mongoose'),
     Schema = mongoose.Schema;
 
 var RouteSchema = new Schema({
-    _id: Number,
+    _id: String,
     func: String,
     Route: String
 });
