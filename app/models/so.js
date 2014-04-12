@@ -11,7 +11,6 @@ var SOSchema = new Schema({
     aId: {type: Schema.ObjectId, ref: 'Employee'},
     eId: {type: Schema.ObjectId, ref: 'Employee', index: true},
     cId: {type: Schema.ObjectId, ref: 'Customer', index: true},
-    soDate: {type: Date, index: true},
     deuDate: {type: Date, index: true},
     voucherStatus: {type: Schema.ObjectId, ref: 'VoucherStatus', index: true},
     items: [

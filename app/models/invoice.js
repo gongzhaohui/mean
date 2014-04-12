@@ -21,7 +21,17 @@ var InvoiceSchema = new Schema({
         }
     ],
     amount: Number,
-    VoucherStatus: {type: Schema.ObjectId, ref: 'VoucherStatus'}
+    VoucherStatus: {type: Schema.ObjectId, ref: 'VoucherStatus'},
+    created: {
+        date: {type: Date, default: Date.now},
+        eId: {type: Schema.ObjectId, ref: 'Employee'}
+    },
+    updated: [
+        {
+            date: {type: Date, default: Date.now},
+            eId: {type: Schema.ObjectId, ref: 'Employee'}
+        }
+    ]
 });
 InvoiceSchema.statics = {};
 InvoiceSchema.methods = {};

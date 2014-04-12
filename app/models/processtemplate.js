@@ -8,8 +8,7 @@ var mongoose = require('mongoose'),
 
 var ProcessTemplateSchema = new Schema({
     id: String,
-    date: Date,
-    name: String,
+    name: {type: String, unique: true},
     Operations: [
         {
             rowNo: Number,
@@ -18,8 +17,17 @@ var ProcessTemplateSchema = new Schema({
             tasktime: Number,
             comment: String
         }
-    ]
-});
+    ],
+    created: {
+        date: {type: Date, default: Date.now},
+        eId: {type: Schema.ObjectId, ref: 'Employee'}
+    },
+    updated: [
+        {
+            date: {type: Date, default: Date.now},
+            eId: {type: Schema.ObjectId, ref: 'Employee'}
+        }
+    ]});
 ProcessTemplateSchema.statics = {};
 ProcessTemplateSchema.methods = {};
 mongoose.model('ProcessTemplate', ProcessTemplateSchema);

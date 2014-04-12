@@ -17,8 +17,17 @@ var ProcessSchema = new Schema({
             tasktime: Number,
             comment: String
         }
+    ],
+    created: {
+        date: {type: Date, default: Date.now},
+        eId: {type: Schema.ObjectId, ref: 'Employee'}
+    },
+    updated: [
+        {
+            date: {type: Date, default: Date.now},
+            eId: {type: Schema.ObjectId, ref: 'Employee'}
+        }
     ]
-
 });
 ProcessSchema.statics = {};
 ProcessSchema.methods = {};
