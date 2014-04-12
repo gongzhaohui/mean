@@ -8,7 +8,7 @@ var mongoose = require('mongoose'),
 
 var TempSchema = new Schema({
     id: Number,
-    Method: String
+    method: String
 });
 TempSchema.statics = {};
 TempSchema.methods = {};

@@ -6,10 +6,10 @@
 var mongoose = require('mongoose'),
     Schema = mongoose.Schema;
 
-var InboundSchema = new Schema({
+var OutboundSchema = new Schema({
     _id: String,
     date: Date,
-    source: {_id: String, row: Number, ref: String},
+    source: {_id: String, ref: String, row: Number},
     wId: {type: Schema.ObjectId, ref: 'Warehouse'},
     operator: {type: Schema.ObjectId, ref: 'Employee'},
     iId: {type: Schema.ObjectId, ref: 'Inventory'},
@@ -23,8 +23,8 @@ var InboundSchema = new Schema({
             date: {type: Date, default: Date.now},
             eId: {type: Schema.ObjectId, ref: 'Employee'}
         }
-    ]});
-InboundSchema.index({source: 1});
-InboundSchema.statics = {};
-InboundSchema.methods = {};
-mongoose.model('Inbound', InboundSchema);
+    ]
+});
+OutboundSchema.statics = {};
+OutboundSchema.methods = {};
+mongoose.model('Outbound', OutboundSchema);
