@@ -2,11 +2,12 @@
 
 /**
  * Created by gong on 14-3-31.
+ * 更新履历 函数
  */
 var mongoose = require('mongoose'),
     Schema = mongoose.Schema;
 var SOItemSchema = new Schema({
-    row: {type: Number, index: true},
+    row: {type: Number, index: true, unique: true},
     iId: {type: String, ref: 'Inventory', index: true},
     qty: {
         ordered: Number,
@@ -16,7 +17,7 @@ var SOItemSchema = new Schema({
     way: {type: String, ref: 'Way', index: true},
     price: Number,
     deuDate: Date
-});
+}, {autoId: false});
 var SOSchema = new Schema({
     _id: String,
     aId: {type: String, ref: 'Employee'},
@@ -36,7 +37,7 @@ var SOSchema = new Schema({
         }
     ]
 });
-SOSchema.index({_id: 1, 'items..row': 1});
+SOSchema.index({_id: 1, 'items.row': 1});
 SOSchema.statics = {};
 SOSchema.methods = {};
 mongoose.model('SO', SOSchema);

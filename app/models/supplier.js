@@ -6,7 +6,7 @@
 
 var mongoose = require('mongoose'),
     Schema = mongoose.Schema;
-var CustomerSchema = new Schema(
+var SupplierSchema = new Schema(
     {
         _id: String,
         name: {
@@ -48,7 +48,7 @@ var CustomerSchema = new Schema(
             hobbies: [String]
         },
         rating: {type: String, ref: 'creditrating'},
-        salesman: {type: String, ref: 'Employee'},
+        buyer: {type: String, ref: 'Employee'},
         created: {
             date: {type: Date, default: Date.now},
             eId: {type: String, ref: 'Employee'}
@@ -61,21 +61,14 @@ var CustomerSchema = new Schema(
         ]
     });
 
-/**
- * Validations
- */
-/*
- CustomerSchema.path('controller').validate(function (controller) {
- return controller.length;
- }, 'Controller cannot be blank');
- */
+
 /**
  * Statics
  */
-CustomerSchema.statics.load = function (id, cb) {
+SupplierSchema.statics.load = function (id, cb) {
     this.findOne({
         _id: id
     }).populate('salesman', '_id username').exec(cb);
 };
 
-mongoose.model('Customer', CustomerSchema);
+mongoose.model('Supplier', SupplierSchema);

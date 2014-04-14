@@ -21,6 +21,7 @@ var InventorySchema = new Schema({
     },
     category: {type: String, ref: 'Category', index: true},
     way: {type: String, ref: 'Way'},
+    defaultWh: {type: String, ref: 'Warehouse', index: true},
     qty: {
         available: {type: Number, default: 0},
         reserved: {type: Number, default: 0}

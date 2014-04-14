@@ -2,10 +2,16 @@
 
 /**
  * Created by gong on 14-4-1.
+ * 更新履历
  */
 var mongoose = require('mongoose'),
     Schema = mongoose.Schema;
 
+var SourceSchema = new Schema({
+    _id: {type: String, index: true},
+    row: {type: Number},
+    ref: {type: String}
+});
 var OperationSchema = new Schema({
     row: {type: Number, index: true},
     station: {type: String, index: true},
@@ -34,14 +40,15 @@ var OperationSchema = new Schema({
         reason: String,
         method: {type: String, ref: 'RepairMethod'}
     }
-});
+}, {autoId: false});
 var MOItemSchema = new Schema({
     row: {type: Number, index: true},
+    source: SourceSchema,
     iId: {type: String, ref: 'Inventory', index: true},
     qty: Number,
     dueDate: Date,
     way: {type: String, ref: 'Way'},
-    status: Number,
+    status: {type: String, ref: 'VoucherStatus', index: true},
     operations: [OperationSchema],
     check: {
         date: Date,
@@ -61,11 +68,6 @@ var MOSchema = new Schema({
     eId: {type: String, ref: 'Employee'},
     moDate: {type: Date, index: true},
     deuDate: {type: Date, index: true},
-    source: {
-        _id: {type: String},
-        row: {type: Number},
-        ref: {type: String}
-    },
     voucherStatus: {type: String, ref: 'VoucherStatus', index: true},
     items: [MOItemSchema],
     created: {
@@ -80,8 +82,9 @@ var MOSchema = new Schema({
     ]
 
 });
-MOSchema.index({'source._id': 1, 'source.row': 1});
-MOSchema.index({'_id': 1, 'items..row': 1});
+MOSchema.index({'items.source': 1});
+MOSchema.index({'_id': 1, 'items.row': 1});
+MOSchema.index({'_id': 1, 'items.row': 1, 'items.operation.row': 1});
 MOSchema.statics = {};
 MOSchema.methods = {};
 mongoose.model('MO', MOSchema);
